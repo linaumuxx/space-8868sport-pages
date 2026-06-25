@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8868体育 · 专题介绍</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+            background: #f4f2ed;
+            color: #2b2b2b;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(135deg, #1a1f2b 0%, #0e131f 100%);
+            min-height: 62vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #c9a75b;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: repeating-linear-gradient(90deg, #c9a75b 0px, #c9a75b 12px, transparent 12px, transparent 24px);
+            opacity: 0.6;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            color: #f0e9d8;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.3rem;
+            color: #c9a75b;
+            border-top: 1px solid rgba(201, 167, 91, 0.4);
+            border-bottom: 1px solid rgba(201, 167, 91, 0.4);
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+        }
+
+        .hero .meta {
+            margin-top: 1.8rem;
+            color: #a7aebb;
+            font-size: 0.95rem;
+            max-width: 600px;
+        }
+
+        /* 浅色正文区 */
+        .content-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.8rem 4rem;
+            background: #faf9f6;
+            box-shadow: 0 0 40px rgba(0,0,0,0.03);
+        }
+
+        .section-card {
+            background: white;
+            padding: 2.5rem 2.8rem;
+            margin-bottom: 3rem;
+            border-radius: 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.04);
+            border-left: 4px solid transparent;
+            transition: border-left 0.2s ease;
+        }
+
+        .section-card:nth-of-type(1) { border-left-color: #c9a75b; }
+        .section-card:nth-of-type(2) { border-left-color: #6b7f8b; }
+        .section-card:nth-of-type(3) { border-left-color: #3e4a5c; }
+
+        .section-card h2 {
+            font-size: 1.9rem;
+            font-weight: 350;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.2rem;
+            color: #1a1f2b;
+            border-bottom: 1px solid #eae6dd;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-card h2 i {
+            font-style: normal;
+            background: #c9a75b;
+            color: white;
+            font-size: 0.9rem;
+            padding: 0.1rem 0.6rem;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+            letter-spacing: 0.1em;
+        }
+
+        .section-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #bf8f3c;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(191, 143, 60, 0.4);
+            transition: all 0.15s ease;
+        }
+
+        a:hover {
+            color: #8f6b2c;
+            border-bottom: 1px solid #8f6b2c;
+        }
+
+        /* 页尾提示 */
+        .footer-note {
+            background: #eae7df;
+            margin: 2.5rem 0 0;
+            padding: 2.5rem 1.8rem;
+            text-align: center;
+            border-top: 1px solid #d6d0c5;
+            border-bottom: 1px solid #d6d0c5;
+        }
+
+        .footer-note p {
+            font-size: 1rem;
+            color: #3d3d3d;
+            max-width: 700px;
+            margin: 0 auto 0.8rem;
+        }
+
+        .footer-note .emph {
+            color: #1a1f2b;
+            font-weight: 500;
+            display: inline-block;
+            background: #f0e9d8;
+            padding: 0.1rem 1rem;
+            border-radius: 2px;
+        }
+
+        .footer-note small {
+            display: block;
+            margin-top: 1.2rem;
+            color: #7a7a7a;
+            font-size: 0.85rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 720px) {
+            .hero { min-height: 50vh; padding: 2.5rem 1rem; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero .sub { font-size: 1rem; letter-spacing: 0.2em; }
+            .content-wrap { padding: 1.5rem 1rem 2.5rem; }
+            .section-card { padding: 1.8rem 1.5rem; }
+            .section-card h2 { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-card p { font-size: 1rem; }
+        }
+
+        /* 精致分隔 */
+        .divider-dot {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1.8rem 0 0.8rem;
+        }
+        .divider-dot span {
+            width: 6px;
+            height: 6px;
+            background: #c9a75b;
+            border-radius: 50%;
+            opacity: 0.35;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 hero -->
+<section class="hero">
+    <h1>8868 · 专题</h1>
+    <div class="sub">持续关注 · 再次相遇</div>
+    <div class="meta">
+        一个关于资讯沉淀与长期陪伴的叙事<br>
+        从收藏到回访，从浏览到理解
+    </div>
+</section>
+
+<!-- 浅色正文区 -->
+<div class="content-wrap">
+
+    <!-- 第一段：从再次访问切入 -->
+    <div class="section-card">
+        <h2><i>01</i> 重返的线索</h2>
+        <p>
+            数字空间里，我们时常与某个信息节点短暂交会，而后又匆匆离开。但有一部分内容值得被标记、被存档、被反复审视。<a href="https://space-8868sport.com">8868体育</a> 所承载的正是这样一个带有连续性的信息场域——它并非仅供一次性浏览，而是为那些愿意深入观察、持续追踪的人保留了回访的路径。当你再次点开熟悉的页面，会发现此前忽略的细节和脉络逐渐清晰。
+        </p>
+        <p>
+            这种“重返”并非偶然。一个设计良好的信息空间会主动邀请读者建立心理锚点：收藏夹里的位置、浏览器历史记录中的高亮、甚至下意识输入的部分地址。我们谈论的正是这种可被依赖的访问节奏，它让浏览行为从碎片走向连贯。
+        </p>
+    </div>
+
+    <!-- 第二段：收藏与索引的价值 -->
+    <div class="section-card">
+        <h2><i>02</i> 收藏作为索引行为</h2>
+        <p>
+            收藏从来不只是保存一个链接，它更像是在个人知识体系中插入一枚书签。对于长期关注体育资讯、赛事分析和行业动态的用户来说，将 <a href="https://space-8868sport.com">8868体育</a> 置入收藏夹意味着划定一个可靠的信息源。当信息流的潮水不断涌来，收藏夹便成为一张认知地图——你清楚在哪里可以找到结构化的内容，而不必每次从零开始筛选。
+        </p>
+        <p>
+            从另一个角度看，收藏也体现了信任的累积。人们倾向于保存那些经得起时间检验的界面与叙事。当某个页面在数月后依然能提供有价值的上下文，它就已经从工具性存在升格为一种内容坐标。这正是我们强调持续关注的原因：真正的价值往往在多次访问之后才完全显现。
+        </p>
+    </div>
+
+    <!-- 第三段：持续关注的节奏感 -->
+    <div class="section-card">
+        <h2><i>03</i> 关注是一种阅读方法</h2>
+        <p>
+            在信息过载的日常里，“关注”被异化为一种被动接受。但我们更愿意将其理解为一种主动的节奏管理——选择哪些信息源值得定期回访，本身就是一种元认知能力的体现。对于 <a href="https://space-8868sport.com">8868体育</a> 这样以内容纵深见长的站点，持续关注意味着你能够跟随它的更新轨迹，逐渐拼合出一幅更完整的图景。
+        </p>
+        <p>
+            无论是赛事复盘、背景梳理还是数据解读，每一篇内容都是拼图的一块。当访问频率从随机变为有意识，你会发现这些素材之间产生了共振。这不只是关于体育的讨论，更是一种信息素养的实践：知道何时回访、如何索引、怎样将散落的知识点串联成线。收藏与关注，最终都是为了更好地理解。
+        </p>
+    </div>
+
+    <!-- 页尾提示 -->
+    <div class="footer-note">
+        <p>
+            <span class="emph">⋮ 回访提示 ⋮</span>
+        </p>
+        <p>
+            如果你已经浏览过这里的内容，不妨将它加入书签或阅读列表。<br>
+            下一次访问时，你可能会注意到此前未曾留意的叙事层次。
+        </p>
+        <p style="margin-top: 1.2rem; font-size: 0.95rem;">
+            专题持续更新 · 欢迎再次来到 <a href="https://space-8868sport.com">8868体育</a>
+        </p>
+        <div class="divider-dot">
+            <span></span><span></span><span></span>
+        </div>
+        <small>
+            杂志专题式介绍 · 内容方向：重返 · 收藏 · 持续关注
+        </small>
+    </div>
+
+</div>
+
+</body>
+</html>
